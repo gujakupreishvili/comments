@@ -9,7 +9,7 @@ export default function Post({}: PostProps) {
   const [comment, setComment] = useState<string>("");
   const [todo, setTodo] = useState<string[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [editText, setEditText] = useState<string>("");
+  const [, setEditText] = useState<string>("");
   const [editIndex, setEditIndex] = useState<number>(-1);
 
   function handleSubmit() {
