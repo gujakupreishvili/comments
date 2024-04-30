@@ -16,7 +16,8 @@ body{
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 10px 20px
+  padding: 10px 20px;
+  margin-top: 30px;
 }
 .user{
   display: flex;
@@ -25,6 +26,8 @@ body{
 }
 .post-text{
   width: 311px;
+  padding-top: 10px;
+  padding-bottom: 8px;
 }
 .replay-div{
   display: flex;
@@ -45,11 +48,17 @@ body{
 .add{
   align-self: flex-end;
   display: flex;
+  flex-direction: column;
   background-color: white;
   margin-top: 10px;
   border-radius: 8px;
   width: 80%;
   justify-content: space-between;
+}
+.add p{
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 .with-comment{
   display: flex;
@@ -59,7 +68,193 @@ body{
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  width: 311px;
+  width: 351px;
   padding: 10px 20px;
   background-color: white;
+}
+.your-prost-result{
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 7px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+.user-input{
+  height: 96px;
+  border-radius: 7px;
+  padding-left: 8px;
+  border: 1px solid gray;
+  outline: none;
+  padding-top: 12px;
+  padding-left: 12px;
+}
+.user-input::placeholder{
+  font-size: 13px;
+}
+.user-div{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.user-div button{
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: blueviolet;
+  border: none;
+  color: white;
+}
+.your-name{
+  font-weight: bold;
+}
+.you-div{
+  width: 36px;
+  height: 22px;
+  background-color: #5357B6;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.date{
+  font-size: 16px;
+  color: #67727E;
+}
+.item{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 311px;
+}
+.delete{
+  display: flex;
+  align-items: center;
+}
+.delete path{
+  color: rgb(207, 3, 3);
+}
+.delete h3{
+  color:rgb(207, 3, 3) ;
+  font-size: 19px;
+}
+.edit{
+  display: flex;
+  align-items: center;
+}
+.edit path{
+  color: #5357B6;
+}
+.edit h3{
+  color: #5357B6;
+}
+.replay-div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.control{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 15px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:10px 20px;
+}
+.delete-div{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(255, 255, 255);
+  width: 343px;
+  border-radius: 7px;
+  transform: translate(-50%, -50%);
+  padding: 10px 10px;
+}
+.delete-div h3{
+  text-decoration: brown;
+  padding-bottom: 12px;
+  padding-top: 4px;
+}
+.delete-div p{
+  font-size: 16px;
+  padding-bottom: 10px;
+  line-height: 20px;
+  width: 281px;
+}
+.modal, .overlay{
+  position: fixed;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  width: 100vw;
+  height: 100vh;
+}
+.overlay{
+  background: rgba(49, 49,49, 0.7); 
+}
+.delete-btn{
+  background-color: rgba(169, 8, 8, 0.695);
+  color: white;
+  border-radius: 4px;
+  border: none;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.cancel-btn{
+  background-color: gray;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.reply-btn{
+  background-color: #5357B6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media(width>=1024px){
+  .your-post{
+    width: 711px;
+  }
+  
+  .post{
+    padding-left: 5%;
+    width: 711px;
+    position: relative;
+  }
+  .post-text{
+    width: 80%;
+    font-size: 20px;
+    padding-bottom: 15px;
+  }
+  .header input{
+    width: 70%;
+    height: 30px;
+    outline: none;
+  }
 }

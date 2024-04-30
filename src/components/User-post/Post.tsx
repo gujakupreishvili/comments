@@ -1,49 +1,85 @@
 import you from "../../../public/assets/you.png";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
-export default function Post() {
-  const [comment, setComment] = useState("");
-  const [todo, setTodo] = useState([]);
-  const [showmodal, setShowmodal] = useState(false);
+import { MdDelete, MdEdit } from "react-icons/md";
+
+interface PostProps {}
+
+export default function Post({}: PostProps) {
+  const [comment, setComment] = useState<string>("");
+  const [todo, setTodo] = useState<string[]>([]);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [editText, setEditText] = useState<string>("");
+  const [editIndex, setEditIndex] = useState<number>(-1);
 
   function handleSubmit() {
     if (!comment) {
       alert("write something...");
+      return;
     }
-    setTodo((prev) => [...prev, comment]);
+    if (editIndex === -1) {
+      setTodo((prev) => [...prev, comment]);
+    } else {
+      setTodo((prev) => {
+        const updatedTodo = [...prev];
+        updatedTodo[editIndex] = comment;
+        return updatedTodo;
+      });
+      setEditIndex(-1);
+      setEditText("");
+    }
     setComment("");
   }
+
   function showDeleteModal() {
-    setShowmodal(!showmodal);
+    setShowModal(!showModal);
   }
-  console.log(todo);
+
+  function handleEdit(index: number) {
+    setEditIndex(index);
+    setEditText(todo[index]);
+    setComment(todo[index]);
+  }
+
   return (
     <>
       <div className="your-post1">
-        {todo.map((item) => {
+        {todo.map((item, index) => {
           return (
-            <div>
+            <div key={index} className="your-prost-result">
               <div className="user">
                 <img src={you} alt="" />
-                <p>juliusomo</p>
-                <p>You</p>
-                <p>1 month ago</p>
+                <p className="your-name">juliusomo</p>
+                <p className="you-div">You</p>
+                <p className="date">1 month ago</p>
               </div>
-              <p>{item}</p>
-              <button onClick={showDeleteModal}>delelte</button>
-              <button>update</button>
-              {showmodal && <Modal  setShowmodal={setShowmodal} product={item} setTodo={setTodo}/>}
+              <p className="item">{item}</p>
+              <div onClick={showDeleteModal} className="delete">
+                <MdDelete />
+                <h3>Delete</h3>
+              </div>
+              <div className="edit" onClick={() => handleEdit(index)}>
+                <MdEdit />
+                <h3>Edit</h3>
+              </div>
+              {showModal && (
+                <Modal
+                  setShowModal={setShowModal}
+                  product={item}
+                  setTodo={setTodo}
+                />
+              )}
             </div>
           );
         })}
       </div>
 
       <div className="your-post ">
-        <input
-          type="text"
+        <textarea
           placeholder="Add a comment..."
           onChange={(e) => setComment(e.target.value)}
           value={comment}
+          className="user-input"
         />
         <div className="user-div">
           <img src={you} alt="" />
