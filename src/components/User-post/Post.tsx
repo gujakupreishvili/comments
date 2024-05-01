@@ -8,8 +8,7 @@ interface PostProps {}
 export default function Post({}: PostProps) {
   const [comment, setComment] = useState<string>("");
   const [todo, setTodo] = useState<string[]>([]);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [, setEditText] = useState<string>("");
+  const [showmodal, setShowmodal] = useState<boolean>(false);
   const [editIndex, setEditIndex] = useState<number>(-1);
 
   function handleSubmit() {
@@ -20,58 +19,52 @@ export default function Post({}: PostProps) {
     if (editIndex === -1) {
       setTodo((prev) => [...prev, comment]);
     } else {
-      setTodo((prev) => {
-        const updatedTodo = [...prev];
-        updatedTodo[editIndex] = comment;
-        return updatedTodo;
-      });
+      const updatedTodo = [...todo];
+      updatedTodo[editIndex] = comment;
+      setTodo(updatedTodo);
       setEditIndex(-1);
-      setEditText("");
     }
     setComment("");
   }
 
   function showDeleteModal() {
-    setShowModal(!showModal);
+    setShowmodal(!showmodal);
   }
 
   function handleEdit(index: number) {
-    setEditIndex(index);
-    setEditText(todo[index]);
     setComment(todo[index]);
+    setEditIndex(index);
   }
 
   return (
     <>
       <div className="your-post1">
-        {todo.map((item, index) => {
-          return (
-            <div key={index} className="your-prost-result">
-              <div className="user">
-                <img src={you} alt="" />
-                <p className="your-name">juliusomo</p>
-                <p className="you-div">You</p>
-                <p className="date">1 month ago</p>
-              </div>
-              <p className="item">{item}</p>
-              <div onClick={showDeleteModal} className="delete">
-                <MdDelete />
-                <h3>Delete</h3>
-              </div>
-              <div className="edit" onClick={() => handleEdit(index)}>
-                <MdEdit />
-                <h3>Edit</h3>
-              </div>
-              {showModal && (
-                <Modal
-                  setShowModal={setShowModal}
-                  product={item}
-                  setTodo={setTodo}
-                />
-              )}
+        {todo.map((item, index) => (
+          <div key={index} className="your-prost-result">
+            <div className="user">
+              <img src={you} alt="" />
+              <p className="your-name">juliusomo</p>
+              <p className="you-div">You</p>
+              <p className="date">1 month ago</p>
             </div>
-          );
-        })}
+            <p className="item">{item}</p>
+            <div onClick={showDeleteModal} className="delete">
+              <MdDelete />
+              <h3>Delete</h3>
+            </div>
+            <div className="edit" onClick={() => handleEdit(index)}>
+              <MdEdit />
+              <h3>Edit</h3>
+            </div>
+            {showmodal && (
+              <Modal
+                setShowmodal={setShowmodal}
+                product={item}
+                setTodo={setTodo}
+              />
+            )}
+          </div>
+        ))}
       </div>
 
       <div className="your-post ">

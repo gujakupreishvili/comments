@@ -20,7 +20,9 @@ export default function Contnat() {
       setSend(!send);
     }
   }
-
+  function modal() {
+    setShowmodal(!showmodal);
+  }
   function showDeleteModal() {
     setShowmodal(!showmodal);
     setReplay(false);
@@ -67,7 +69,7 @@ export default function Contnat() {
               </button>
             )}
             <div className={send ? "control" : "none"}>
-              <div className="delete" onClick={showDeleteModal}>
+              <div className="delete" onClick={modal}>
                 <MdDelete />
                 <h3>Delete</h3>
               </div>
